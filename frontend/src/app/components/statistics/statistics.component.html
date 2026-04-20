@@ -1,0 +1,86 @@
+<div class="stats-container">
+  <div class="stats-header">
+    <h1>Statistics</h1>
+  </div>
+
+  <!-- Error -->
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="summary-grid" *ngIf="summary">
+    <div class="summary-card">
+      <div class="summary-value">{{ summary.total_habits }}</div>
+      <div class="summary-label">Total habits</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-value">{{ summary.completed_today }}</div>
+      <div class="summary-label">Completed today</div>
+    </div>
+    <div class="summary-card highlight">
+      <div class="summary-value">{{ summary.completion_rate }}%</div>
+      <div class="summary-label">Today's rate</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-value">{{ summary.best_streak }}</div>
+      <div class="summary-label">Best streak</div>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="filters-card">
+    <div class="filters-row">
+      <div class="filter-group">
+        <label>Group by</label>
+        <select [(ngModel)]="groupBy" name="groupBy">
+          <option value="day">Day</option>
+          <option value="week">Week</option>
+          <option value="month">Month</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Habit</label>
+        <select [(ngModel)]="selectedHabit" name="selectedHabit">
+          <option value="">All habits</option>
+          <option *ngFor="let h of habits" [value]="h.id">{{ h.name }}</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>From</label>
+        <input type="date" [(ngModel)]="startDate" name="startDate" />
+      </div>
+
+      <div class="filter-group">
+        <label>To</label>
+        <input type="date" [(ngModel)]="endDate" name="endDate" />
+      </div>
+
+      <button class="btn-apply" (click)="loadStats()">Apply</button>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <div class="chart-card">
+    <h3>Completions over time</h3>
+
+    <div class="loading" *ngIf="isLoading">Loading...</div>
+
+    <div class="empty-state" *ngIf="!isLoading && statsData.length === 0">
+      No data for the selected period.
+    </div>
+
+    <div class="bar-chart" *ngIf="!isLoading && statsData.length > 0">
+      <div class="bar-row" *ngFor="let item of statsData">
+        <div class="bar-label">{{ formatPeriod(item.period) }}</div>
+        <div class="bar-track">
+          <div class="bar-fill" [style.width]="getBarWidth(item.total)">
+            <span class="bar-value">{{ item.total }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

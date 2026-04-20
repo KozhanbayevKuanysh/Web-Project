@@ -1,0 +1,126 @@
+
+<div class="habits-container">
+  <div class="habits-header">
+    <h1>My habits</h1>
+    <button class="btn-primary" (click)="toggleCreateForm()">
+      {{ showCreateForm ? 'Cancel' : '+ New habit' }}
+    </button>
+  </div>
+
+  <!-- Create Habit Form -->
+  <div class="create-form" *ngIf="showCreateForm">
+    <h3>Create new habit</h3>
+    <form (ngSubmit)="createHabit()">
+
+      <div class="form-group">
+        <label for="habitName">Habit name</label>
+        <input
+          type="text"
+          id="habitName"
+          [(ngModel)]="newHabit.name"
+          name="name"
+          placeholder="e.g. Morning exercise"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select [(ngModel)]="newHabit.category" name="category" id="category">
+          <option [value]="null">Select a category</option>
+          <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+        </select>
+
+        <button type="button" class="btn-toggle-category" (click)="showCategoryForm = !showCategoryForm">
+          {{ showCategoryForm ? 'Cancel' : '+ New category' }}
+        </button>
+
+        <div class="category-create-row" *ngIf="showCategoryForm">
+          <input
+            [(ngModel)]="newCategoryName"
+            name="newCategoryName"
+            placeholder="Category name"
+          />
+          <button type="button" class="btn-save-category" (click)="createCategory()">Create</button>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="frequency">Frequency</label>
+          <select id="frequency" [(ngModel)]="newHabit.frequency" name="frequency">
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="goal">Daily goal</label>
+          <input
+            type="number"
+            id="goal"
+            [(ngModel)]="newHabit.goal"
+            name="goal"
+            min="1"
+          />
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">Create habit</button>
+    </form>
+  </div>
+
+  <!-- Error Message -->
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading" *ngIf="isLoading">
+    Loading habits...
+  </div>
+
+  <!-- Habits List -->
+  <div class="habits-list" *ngIf="!isLoading">
+    <div class="habit-card" *ngFor="let habit of habits"
+         [class.completed]="isTodayComplete(habit)">
+
+      <div class="habit-info">
+        <div class="habit-header">
+          <h3>{{ habit.name }}</h3>
+          <span class="streak" *ngIf="habit.streak">
+            {{ habit.streak }} day streak
+          </span>
+        </div>
+
+        <p class="habit-description" *ngIf="habit.description">
+          {{ habit.description }}
+        </p>
+
+        <div class="habit-meta">
+          <span class="frequency">{{ habit.frequency || 'daily' }}</span>
+          <span class="goal">Goal: {{ habit.goal || 1 }}/day</span>
+        </div>
+      </div>
+
+      <div class="habit-actions">
+        <button
+          class="btn-complete"
+          (click)="completeHabit(habit)"
+          [disabled]="isTodayComplete(habit)"
+        >
+          {{ isTodayComplete(habit) ? 'Done today' : 'Mark complete' }}
+        </button>
+
+        <button class="btn-delete" (click)="deleteHabit(habit)">
+          Delete
+        </button>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="habits.length === 0">
+      <p>No habits yet. Create your first habit to get started.</p>
+    </div>
+  </div>
+</div>

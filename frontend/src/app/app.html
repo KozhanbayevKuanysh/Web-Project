@@ -1,0 +1,8 @@
+<nav *ngIf="apiService.isAuthenticated()">
+  <a routerLink="/home" routerLinkActive="active-link">Today</a>
+  <a routerLink="/habits" routerLinkActive="active-link">Habits</a>
+  <a routerLink="/statistics" routerLinkActive="active-link">Statistics</a>
+  <button (click)="logout()">Log Out</button>
+</nav>
+
+<router-outlet></router-outlet>
