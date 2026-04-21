@@ -1,10 +1,31 @@
-
 <div class="habits-container">
+
+  <!-- Header -->
   <div class="habits-header">
     <h1>My habits</h1>
-    <button class="btn-primary" (click)="toggleCreateForm()">
-      {{ showCreateForm ? 'Cancel' : '+ New habit' }}
-    </button>
+    <div class="header-actions">
+      <button
+        class="btn-complete-all"
+        (click)="completeAll()"
+        [disabled]="isCompletingAll || allDoneToday"
+        *ngIf="habits.length > 0"
+      >
+        {{ allDoneToday ? 'All done today!' : isCompletingAll ? 'Completing...' : 'Complete all' }}
+      </button>
+      <button class="btn-primary" (click)="toggleCreateForm()">
+        {{ showCreateForm ? 'Cancel' : '+ New habit' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Complete All success message -->
+  <div class="success-message" *ngIf="completeAllMessage">
+    {{ completeAllMessage }}
+  </div>
+
+  <!-- Error Message -->
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
   </div>
 
   <!-- Create Habit Form -->
@@ -30,17 +51,11 @@
           <option [value]="null">Select a category</option>
           <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
         </select>
-
         <button type="button" class="btn-toggle-category" (click)="showCategoryForm = !showCategoryForm">
           {{ showCategoryForm ? 'Cancel' : '+ New category' }}
         </button>
-
         <div class="category-create-row" *ngIf="showCategoryForm">
-          <input
-            [(ngModel)]="newCategoryName"
-            name="newCategoryName"
-            placeholder="Category name"
-          />
+          <input [(ngModel)]="newCategoryName" name="newCategoryName" placeholder="Category name" />
           <button type="button" class="btn-save-category" (click)="createCategory()">Create</button>
         </div>
       </div>
@@ -54,16 +69,9 @@
             <option value="monthly">Monthly</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="goal">Daily goal</label>
-          <input
-            type="number"
-            id="goal"
-            [(ngModel)]="newHabit.goal"
-            name="goal"
-            min="1"
-          />
+          <input type="number" id="goal" [(ngModel)]="newHabit.goal" name="goal" min="1" />
         </div>
       </div>
 
@@ -71,33 +79,22 @@
     </form>
   </div>
 
-  <!-- Error Message -->
-  <div class="error-message" *ngIf="errorMessage">
-    {{ errorMessage }}
-  </div>
-
-  <!-- Loading State -->
-  <div class="loading" *ngIf="isLoading">
-    Loading habits...
-  </div>
+  <!-- Loading -->
+  <div class="loading" *ngIf="isLoading">Loading habits...</div>
 
   <!-- Habits List -->
   <div class="habits-list" *ngIf="!isLoading">
-    <div class="habit-card" *ngFor="let habit of habits"
-         [class.completed]="isTodayComplete(habit)">
-
+    <div
+      class="habit-card"
+      *ngFor="let habit of habits"
+      [class.completed]="isTodayComplete(habit)"
+    >
       <div class="habit-info">
         <div class="habit-header">
           <h3>{{ habit.name }}</h3>
-          <span class="streak" *ngIf="habit.streak">
-            {{ habit.streak }} day streak
-          </span>
+          <span class="streak" *ngIf="habit.streak">{{ habit.streak }} day streak</span>
         </div>
-
-        <p class="habit-description" *ngIf="habit.description">
-          {{ habit.description }}
-        </p>
-
+        <p class="habit-description" *ngIf="habit.description">{{ habit.description }}</p>
         <div class="habit-meta">
           <span class="frequency">{{ habit.frequency || 'daily' }}</span>
           <span class="goal">Goal: {{ habit.goal || 1 }}/day</span>
@@ -105,6 +102,9 @@
       </div>
 
       <div class="habit-actions">
+        <button class="btn-progress" (click)="openProgress(habit)" title="View progress">
+          Stats
+        </button>
         <button
           class="btn-complete"
           (click)="completeHabit(habit)"
@@ -112,15 +112,82 @@
         >
           {{ isTodayComplete(habit) ? 'Done today' : 'Mark complete' }}
         </button>
-
-        <button class="btn-delete" (click)="deleteHabit(habit)">
-          Delete
-        </button>
+        <button class="btn-delete" (click)="deleteHabit(habit)">Delete</button>
       </div>
     </div>
 
     <div class="empty-state" *ngIf="habits.length === 0">
       <p>No habits yet. Create your first habit to get started.</p>
     </div>
+  </div>
+
+</div>
+
+<!-- ── Progress Modal ─────────────────────────── -->
+<div class="modal-overlay" *ngIf="showProgressModal" (click)="closeProgress()">
+  <div class="modal" (click)="$event.stopPropagation()">
+
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">{{ selectedHabit?.name }}</div>
+        <div class="modal-subtitle">Progress & streaks</div>
+      </div>
+      <button class="modal-close" (click)="closeProgress()">✕</button>
+    </div>
+
+    <div class="modal-loading" *ngIf="isLoadingProgress">Loading...</div>
+
+    <div *ngIf="!isLoadingProgress && habitProgress">
+
+      <!-- Stat cards -->
+      <div class="progress-grid">
+        <div class="progress-card">
+          <div class="progress-value gold">{{ habitProgress.current_streak }}</div>
+          <div class="progress-label">Current streak</div>
+        </div>
+        <div class="progress-card">
+          <div class="progress-value">{{ habitProgress.longest_streak }}</div>
+          <div class="progress-label">Longest streak</div>
+        </div>
+        <div class="progress-card">
+          <div class="progress-value">{{ habitProgress.total_completed }}</div>
+          <div class="progress-label">Total completions</div>
+        </div>
+      </div>
+
+      <!-- Streak progress bar -->
+      <div class="streak-section">
+        <div class="streak-bar-label">
+          <span>Current vs best streak</span>
+          <span class="streak-bar-pct">{{ getCompletionPercent() }}%</span>
+        </div>
+        <div class="streak-bar-track">
+          <div class="streak-bar-fill" [style.width.%]="getCompletionPercent()"></div>
+        </div>
+        <div class="streak-bar-hint">
+          {{ habitProgress.current_streak }} of {{ habitProgress.longest_streak }} days best streak
+        </div>
+      </div>
+
+      <!-- Motivational message -->
+      <div class="motivation-box" *ngIf="habitProgress.current_streak > 0">
+        <span *ngIf="habitProgress.current_streak >= habitProgress.longest_streak">
+          You're at your best streak! Keep going!
+        </span>
+        <span *ngIf="habitProgress.current_streak < habitProgress.longest_streak && habitProgress.current_streak > 0">
+          {{ habitProgress.longest_streak - habitProgress.current_streak }} more days to beat your record!
+        </span>
+      </div>
+
+      <div class="motivation-box grey" *ngIf="habitProgress.current_streak === 0">
+        Start today to begin a new streak!
+      </div>
+
+    </div>
+
+    <div class="modal-no-data" *ngIf="!isLoadingProgress && !habitProgress">
+      Could not load progress data.
+    </div>
+
   </div>
 </div>

@@ -1,14 +1,16 @@
 <div class="stats-container">
+
   <div class="stats-header">
     <h1>Statistics</h1>
+    <div class="group-btns">
+      <button [class.active]="groupBy === 'day'" (click)="setGroupBy('day')">Day</button>
+      <button [class.active]="groupBy === 'week'" (click)="setGroupBy('week')">Week</button>
+      <button [class.active]="groupBy === 'month'" (click)="setGroupBy('month')">Month</button>
+    </div>
   </div>
 
-  <!-- Error -->
-  <div class="error-message" *ngIf="errorMessage">
-    {{ errorMessage }}
-  </div>
+  <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
 
-  <!-- Summary Cards -->
   <div class="summary-grid" *ngIf="summary">
     <div class="summary-card">
       <div class="summary-value">{{ summary.total_habits }}</div>
@@ -16,7 +18,7 @@
     </div>
     <div class="summary-card">
       <div class="summary-value">{{ summary.completed_today }}</div>
-      <div class="summary-label">Completed today</div>
+      <div class="summary-label">Done today</div>
     </div>
     <div class="summary-card highlight">
       <div class="summary-value">{{ summary.completion_rate }}%</div>
@@ -28,18 +30,8 @@
     </div>
   </div>
 
-  <!-- Filters -->
   <div class="filters-card">
     <div class="filters-row">
-      <div class="filter-group">
-        <label>Group by</label>
-        <select [(ngModel)]="groupBy" name="groupBy">
-          <option value="day">Day</option>
-          <option value="week">Week</option>
-          <option value="month">Month</option>
-        </select>
-      </div>
-
       <div class="filter-group">
         <label>Habit</label>
         <select [(ngModel)]="selectedHabit" name="selectedHabit">
@@ -47,40 +39,54 @@
           <option *ngFor="let h of habits" [value]="h.id">{{ h.name }}</option>
         </select>
       </div>
-
       <div class="filter-group">
         <label>From</label>
         <input type="date" [(ngModel)]="startDate" name="startDate" />
       </div>
-
       <div class="filter-group">
         <label>To</label>
         <input type="date" [(ngModel)]="endDate" name="endDate" />
       </div>
-
       <button class="btn-apply" (click)="loadStats()">Apply</button>
     </div>
   </div>
 
-  <!-- Chart -->
-  <div class="chart-card">
-    <h3>Completions over time</h3>
+  <div class="loading" *ngIf="isLoading">Loading...</div>
 
-    <div class="loading" *ngIf="isLoading">Loading...</div>
-
-    <div class="empty-state" *ngIf="!isLoading && statsData.length === 0">
-      No data for the selected period.
-    </div>
-
-    <div class="bar-chart" *ngIf="!isLoading && statsData.length > 0">
-      <div class="bar-row" *ngFor="let item of statsData">
-        <div class="bar-label">{{ formatPeriod(item.period) }}</div>
-        <div class="bar-track">
-          <div class="bar-fill" [style.width]="getBarWidth(item.total)">
-            <span class="bar-value">{{ item.total }}</span>
-          </div>
+  <div *ngIf="!isLoading">
+    <div class="chart-card">
+      <div class="chart-header">
+        <span class="chart-title">Completions over time</span>
+        <div class="chart-legend">
+          <span class="legend-dot navy"></span> Completions
         </div>
       </div>
+      <div class="chart-wrap" style="height: 220px;">
+        <canvas id="completionsChart" role="img" aria-label="Bar chart of habit completions over time"></canvas>
+      </div>
+    </div>
+
+    <div class="charts-row">
+      <div class="chart-card">
+        <div class="chart-header">
+          <span class="chart-title">Completion by habit</span>
+        </div>
+        <div class="chart-wrap" style="height: 200px;">
+          <canvas id="habitChart" role="img" aria-label="Doughnut chart showing completion rate per habit"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-header">
+          <span class="chart-title">Weekly trend</span>
+        </div>
+        <div class="chart-wrap" style="height: 200px;">
+          <canvas id="trendChart" role="img" aria-label="Line chart showing weekly completion trend"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="statsData.length === 0">
+      No data yet. Complete some habits first!
     </div>
   </div>
 </div>

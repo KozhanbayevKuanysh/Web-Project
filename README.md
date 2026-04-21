@@ -5,7 +5,7 @@ Habit Tracker is a web application that helps users build and maintain daily hab
 - Zhapbar Assylzhan
 - Kozhanbayev Kuanysh
 - Supugaliyeva Dilyara
-- 
+
 # Habit Tracker API
 
 ## Features
@@ -41,4 +41,14 @@ GET /api/statistics/
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
-"# dilya-web" 
+
+## Frontend
+- Angular
+- HttpClient
+- Routing
+- JWT auth
+
+## Backend
+- Django REST Framework
+- ViewSets, APIView, FBV
+- PostgreSQL / SQLite

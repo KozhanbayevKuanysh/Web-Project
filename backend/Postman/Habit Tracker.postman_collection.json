@@ -1,0 +1,1565 @@
+{
+  "info": {
+    "_postman_id": "e74e19be-84fd-4739-91a8-2c905d039e62",
+    "name": "Habit Tracker",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53653244"
+  },
+  "item": [
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Categories",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/categories/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "categories",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Categories",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/categories/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "categories",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 20:23:38 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, POST, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "68"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 6,\n        \"name\": \"Health\",\n        \"user\": 4\n    },\n    {\n        \"id\": 7,\n        \"name\": \"Study\",\n        \"user\": 4\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Study\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/categories/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "categories",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Category",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Study\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/categories/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "categories",
+                    ""
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 18:34:58 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, POST, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "32"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 7,\n    \"name\": \"Study\",\n    \"user\": 4\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Habits",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "12345678",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "1234",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"Stat\",\r\n    \"password\": \"12345678\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/token/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "token",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"username\": \"Stat\",\r\n    \"password\": \"12345678\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/token/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "token",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 18:30:53 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "483"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3Njg4MjY1MywiaWF0IjoxNzc2Nzk2MjUzLCJqdGkiOiIwNDVhMDkyMjFkMmU0NGQzOTIyNGRlM2IxNzQzY2FjNyIsInVzZXJfaWQiOjR9.azrYs0kx0Va4TcESucmIVaXU9fbDbCyGGVC3hpfExNs\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Habit",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Meditation\",\r\n  \"description\": \"Relax\",\r\n  \"frequency\": \"daily\",\r\n  \"target_per_day\": 1,\r\n  \"category\": 6\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/habits/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "habits",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Habit",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Meditation\",\r\n  \"description\": \"Relax\",\r\n  \"frequency\": \"daily\",\r\n  \"target_per_day\": 1,\r\n  \"category\": 6\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/habits/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "habits",
+                    ""
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 18:38:22 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, POST, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "155"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 22,\n    \"name\": \"Meditation\",\n    \"description\": \"Relax\",\n    \"frequency\": \"daily\",\n    \"target_per_day\": 1,\n    \"created_at\": \"2026-04-21T18:38:22.682581Z\",\n    \"user\": 4,\n    \"category\": 6\n}"
+            }
+          ]
+        },
+        {
+          "name": "Habit Logs",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"habit\": 22,\r\n  \"date\": \"2026-04-22\",\r\n  \"is_completed\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/habitlogs/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "habitlogs",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Habit Logs",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"habit\": 22,\r\n  \"date\": \"2026-04-22\",\r\n  \"is_completed\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/habitlogs/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "habitlogs",
+                    ""
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 19:45:28 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, POST, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "70"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 44,\n    \"date\": \"2026-04-22\",\n    \"value\": 1,\n    \"is_completed\": true,\n    \"habit\": 22\n}"
+            }
+          ]
+        },
+        {
+          "name": "Habits",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Study\"\r\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/habits/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "habits",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Habits",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Study\"\r\n}"
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/habits/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "habits",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 20:25:13 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, POST, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "461"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 20,\n        \"name\": \"Workout\",\n        \"description\": \"Gym\",\n        \"frequency\": \"daily\",\n        \"target_per_day\": 1,\n        \"created_at\": \"2026-04-21T18:37:47.530567Z\",\n        \"user\": 4,\n        \"category\": 6\n    },\n    {\n        \"id\": 21,\n        \"name\": \"Reading\",\n        \"description\": \"Books\",\n        \"frequency\": \"daily\",\n        \"target_per_day\": 1,\n        \"created_at\": \"2026-04-21T18:38:14.102520Z\",\n        \"user\": 4,\n        \"category\": 7\n    },\n    {\n        \"id\": 22,\n        \"name\": \"Meditation\",\n        \"description\": \"Relax\",\n        \"frequency\": \"daily\",\n        \"target_per_day\": 1,\n        \"created_at\": \"2026-04-21T18:38:22.682581Z\",\n        \"user\": 4,\n        \"category\": 6\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Progress",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Study\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/habits/21/progress",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "habits",
+                "21",
+                "progress"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Progress",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Study\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/habits/21/progress",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "habits",
+                    "21",
+                    "progress"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 20:28:11 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "59"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"current_streak\": 5,\n    \"longest_streak\": 6,\n    \"total_completed\": 9\n}"
+            }
+          ]
+        },
+        {
+          "name": "Complete",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/habits/21/complete/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "habits",
+                "21",
+                "complete",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Complete",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/habits/21/complete/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "habits",
+                    "21",
+                    "complete",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 20:29:44 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "37"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Already completed today\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Today",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/habits/today",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "habits",
+                "today"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Today",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/habits/today",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "habits",
+                    "today"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 20:31:28 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "137"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 20,\n        \"name\": \"Workout\",\n        \"completed\": true\n    },\n    {\n        \"id\": 21,\n        \"name\": \"Reading\",\n        \"completed\": true\n    },\n    {\n        \"id\": 22,\n        \"name\": \"Meditation\",\n        \"completed\": false\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/statistics",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "statistics"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Statistics",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/statistics",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "statistics"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 20:31:55 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "609"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"period\": \"2026-03-25\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-03-29\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-01\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-03\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-05\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-10\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-12\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-13\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-14\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-15\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-16\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-17\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-18\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-19\",\n            \"total\": 3\n        },\n        {\n            \"period\": \"2026-04-20\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-21\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-22\",\n            \"total\": 2\n        }\n    ],\n    \"total_completed\": 29\n}"
+            }
+          ]
+        },
+        {
+          "name": "Stat by day",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/statistics?group_by=day",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "statistics"
+              ],
+              "query": [
+                {
+                  "key": "group_by",
+                  "value": "day"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Stat by day",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/statistics?group_by=day",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "statistics"
+                  ],
+                  "query": [
+                    {
+                      "key": "group_by",
+                      "value": "day"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 20:32:29 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "609"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"period\": \"2026-03-25\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-03-29\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-01\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-03\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-05\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-10\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-12\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-13\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-14\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-15\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-16\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-17\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-18\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-19\",\n            \"total\": 3\n        },\n        {\n            \"period\": \"2026-04-20\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-21\",\n            \"total\": 2\n        },\n        {\n            \"period\": \"2026-04-22\",\n            \"total\": 2\n        }\n    ],\n    \"total_completed\": 29\n}"
+            }
+          ]
+        },
+        {
+          "name": "Stat by habit",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/statistics/?habit=20",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "statistics",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "habit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Stat by habit",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/statistics/?habit=20",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "statistics",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "key": "habit",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 20:33:18 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "371"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"period\": \"2026-04-12\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-13\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-14\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-15\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-16\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-17\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-18\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-19\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-20\",\n            \"total\": 1\n        },\n        {\n            \"period\": \"2026-04-21\",\n            \"total\": 1\n        }\n    ],\n    \"total_completed\": 10\n}"
+            }
+          ]
+        },
+        {
+          "name": "Logs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/habitlogs/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "habitlogs",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Logs",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2ODMyMjUzLCJpYXQiOjE3NzY3OTYyNTMsImp0aSI6ImM2NTA4YjBiNzA2NjRlNGZhN2MzZTA1YTllYjA3MDc5IiwidXNlcl9pZCI6NH0.68fcYY8Mj7hXZCeqqctytUu31lW3I9tn0Kh6N_vfA1Y",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/habitlogs/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "habitlogs",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Apr 2026 20:33:58 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.13.1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, POST, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "2060"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 16,\n        \"date\": \"2026-04-12\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 20\n    },\n    {\n        \"id\": 18,\n        \"date\": \"2026-04-13\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 20\n    },\n    {\n        \"id\": 19,\n        \"date\": \"2026-04-14\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 20\n    },\n    {\n        \"id\": 20,\n        \"date\": \"2026-04-15\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 20\n    },\n    {\n        \"id\": 21,\n        \"date\": \"2026-04-16\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 20\n    },\n    {\n        \"id\": 22,\n        \"date\": \"2026-04-17\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 20\n    },\n    {\n        \"id\": 23,\n        \"date\": \"2026-04-18\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 20\n    },\n    {\n        \"id\": 24,\n        \"date\": \"2026-04-19\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 20\n    },\n    {\n        \"id\": 25,\n        \"date\": \"2026-04-20\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 20\n    },\n    {\n        \"id\": 26,\n        \"date\": \"2026-04-21\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 20\n    },\n    {\n        \"id\": 17,\n        \"date\": \"2026-04-12\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 21\n    },\n    {\n        \"id\": 27,\n        \"date\": \"2026-04-14\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 21\n    },\n    {\n        \"id\": 28,\n        \"date\": \"2026-04-15\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 21\n    },\n    {\n        \"id\": 29,\n        \"date\": \"2026-04-17\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 21\n    },\n    {\n        \"id\": 30,\n        \"date\": \"2026-04-18\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 21\n    },\n    {\n        \"id\": 31,\n        \"date\": \"2026-04-19\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 21\n    },\n    {\n        \"id\": 32,\n        \"date\": \"2026-04-20\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 21\n    },\n    {\n        \"id\": 33,\n        \"date\": \"2026-04-21\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 21\n    },\n    {\n        \"id\": 34,\n        \"date\": \"2026-04-22\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 21\n    },\n    {\n        \"id\": 35,\n        \"date\": \"2026-03-25\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 22\n    },\n    {\n        \"id\": 36,\n        \"date\": \"2026-03-29\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 22\n    },\n    {\n        \"id\": 37,\n        \"date\": \"2026-04-01\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 22\n    },\n    {\n        \"id\": 38,\n        \"date\": \"2026-04-03\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 22\n    },\n    {\n        \"id\": 39,\n        \"date\": \"2026-04-05\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 22\n    },\n    {\n        \"id\": 40,\n        \"date\": \"2026-04-10\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 22\n    },\n    {\n        \"id\": 41,\n        \"date\": \"2026-04-13\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 22\n    },\n    {\n        \"id\": 42,\n        \"date\": \"2026-04-16\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 22\n    },\n    {\n        \"id\": 43,\n        \"date\": \"2026-04-19\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 22\n    },\n    {\n        \"id\": 44,\n        \"date\": \"2026-04-22\",\n        \"value\": 1,\n        \"is_completed\": true,\n        \"habit\": 22\n    }\n]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+<div class="home-container">
+
+  <!-- Greeting -->
+  <div class="greeting-row">
+    <div>
+      <h1 class="greeting">{{ greeting }}</h1>
+      <p class="today-date">{{ todayDate }}</p>
+    </div>
+
+    <!-- Progress Ring -->
+    <div class="ring-wrap" *ngIf="totalCount > 0">
+      <svg width="88" height="88" viewBox="0 0 88 88">
+        <circle cx="44" cy="44" r="36" fill="none" stroke="#f1f5f9" stroke-width="7"/>
+        <circle
+          cx="44" cy="44" r="36"
+          fill="none"
+          stroke="#f59e0b"
+          stroke-width="7"
+          stroke-linecap="round"
+          [attr.stroke-dasharray]="ringCircumference"
+          [attr.stroke-dashoffset]="ringOffset"
+          transform="rotate(-90 44 44)"
+          style="transition: stroke-dashoffset 0.6s ease;"
+        />
+      </svg>
+      <div class="ring-label">
+        <span class="ring-pct">{{ progressPercent }}%</span>
+        <span class="ring-sub">done</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="success-message" *ngIf="completeAllMessage">{{ completeAllMessage }}</div>
+  <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <!-- Loading -->
+  <div class="loading" *ngIf="isLoading">Loading...</div>
+
+  <!-- Summary Cards -->
+  <div class="summary-grid" *ngIf="summary && !isLoading">
+    <div class="summary-card">
+      <div class="summary-value">{{ summary.total_habits }}</div>
+      <div class="summary-label">Total habits</div>
+    </div>
+    <div class="summary-card highlight">
+      <div class="summary-value">{{ completedCount }}/{{ totalCount }}</div>
+      <div class="summary-label">Done today</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-value">{{ summary.best_streak }}</div>
+      <div class="summary-label">Best streak</div>
+    </div>
+  </div>
+
+  <!-- Today's Habits -->
+  <div *ngIf="!isLoading">
+
+    <!-- All done banner -->
+    <div class="all-done-banner" *ngIf="allDone">
+      <span class="all-done-icon">★</span>
+      <div>
+        <div class="all-done-title">All habits done for today!</div>
+        <div class="all-done-sub">Amazing work. See you tomorrow.</div>
+      </div>
+    </div>
+
+    <!-- Habit list -->
+    <div class="section-header" *ngIf="todayHabits.length > 0">
+      <span class="section-title">Today's habits</span>
+      <button
+        class="btn-complete-all"
+        (click)="completeAll()"
+        [disabled]="isCompletingAll || allDone"
+        *ngIf="!allDone"
+      >
+        {{ isCompletingAll ? 'Completing...' : 'Complete all' }}
+      </button>
+    </div>
+
+    <div class="today-list">
+      <div
+        class="today-card"
+        *ngFor="let habit of todayHabits"
+        [class.done]="habit.completed"
+      >
+        <div class="check-circle" [class.checked]="habit.completed" (click)="completeHabit(habit)">
+          <svg *ngIf="habit.completed" width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 7L5.5 10L11.5 4" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="today-info">
+          <span class="today-name" [class.done-text]="habit.completed">{{ habit.name }}</span>
+          <span class="today-freq">{{ habit.frequency || 'daily' }}</span>
+        </div>
+        <span class="done-badge" *ngIf="habit.completed">Done</span>
+        <button class="btn-mark" *ngIf="!habit.completed" (click)="completeHabit(habit)">
+          Mark done
+        </button>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" *ngIf="todayHabits.length === 0">
+      <div class="empty-icon">○</div>
+      <p class="empty-title">No habits yet</p>
+      <p class="empty-sub">Head over to Habits to create your first one.</p>
+      <a class="btn-go-habits" routerLink="/habits">Go to habits</a>
+    </div>
+
+  </div>
+</div>

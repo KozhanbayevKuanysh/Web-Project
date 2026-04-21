@@ -48,9 +48,8 @@ def habit_summary(request):
     })
  
  
-# ─────────────────────────────────────────
 # FBV 2 — Mark all today's habits complete
-# ─────────────────────────────────────────
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def complete_all_today(request):

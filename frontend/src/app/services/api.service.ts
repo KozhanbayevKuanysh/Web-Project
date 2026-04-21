@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HttpParams } from '@angular/common/http';
 
 // Интерфейсы оставляем без изменений
 export interface LoginCredentials { username: string; password: string; }
@@ -114,9 +115,18 @@ export class ApiService {
   // Statistics
   // ============================================
 
-  getStatistics(filters?: { start_date?: string; end_date?: string; category?: number }): Observable<Statistics> {
-    return this.http.get<Statistics>(`${this.apiUrl}/statistics/`, { params: filters as any });
-  }
+  getStatistics(filters: any = {}): Observable<any> {
+
+  let params = new HttpParams();
+
+  Object.keys(filters).forEach(key => {
+    if (filters[key] !== null && filters[key] !== undefined && filters[key] !== '') {
+      params = params.set(key, filters[key]);
+    }
+  });
+
+  return this.http.get(`${this.apiUrl}/statistics/`, { params });
+}
 
   // ============================================
   // Categories
