@@ -51,4 +51,3 @@ python manage.py runserver
 ## Backend
 - Django REST Framework
 - ViewSets, APIView, FBV
-- PostgreSQL / SQLite
