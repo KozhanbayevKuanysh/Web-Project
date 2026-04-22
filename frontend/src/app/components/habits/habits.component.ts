@@ -13,7 +13,7 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class HabitsComponent implements OnInit {
   habits: Habit[] = [];
-  todayHabits: Habit[] = [];
+  todayHabits: any[] = [];
   categories: any[] = [];
   isLoading: boolean = false;
   errorMessage: string = '';
@@ -53,7 +53,7 @@ export class HabitsComponent implements OnInit {
       error: () => {}
     });
   }
-
+  
   loadHabits(): void {
     this.isLoading = true;
     this.errorMessage = '';
@@ -64,11 +64,13 @@ export class HabitsComponent implements OnInit {
   }
 
   loadTodayHabits(): void {
-    this.apiService.getTodayHabits().subscribe({
-      next: (data) => { this.todayHabits = data, this.cd.detectChanges();},
-      error: () => {}
-    });
-  }
+  this.apiService.getTodayHabits().subscribe({
+    next: (data: any[]) => {
+      this.todayHabits = data;
+      this.cd.detectChanges();
+    }
+  });
+}
 
   // ── Complete ──────────────────────────────────
 
@@ -201,8 +203,9 @@ export class HabitsComponent implements OnInit {
   }
 
   isTodayComplete(habit: Habit): boolean {
-    return this.todayHabits.some(h => h.id === habit.id);
-  }
+  const h = this.todayHabits.find(h => h.id === habit.id);
+  return h ? h.completed === true : false;
+}
 
   get allDoneToday(): boolean {
     return this.habits.length > 0 && this.habits.every(h => this.isTodayComplete(h));

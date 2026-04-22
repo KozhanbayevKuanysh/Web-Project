@@ -12,7 +12,8 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  todayHabits: any[] = [];
+  habits: any[] = [];
+  todayHabits: any[] = []; 
   summary: any = null;
   isLoading: boolean = false;
   isCompletingAll: boolean = false;
@@ -20,52 +21,75 @@ export class HomeComponent implements OnInit {
   errorMessage: string = '';
 
   constructor(
-  private apiService: ApiService,
-  private cd: ChangeDetectorRef
-) {}
+    private apiService: ApiService,
+    private cd: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
-    this.loadToday();
+    this.loadAll();
     this.loadSummary();
   }
 
-  loadToday(): void {
+  loadAll(): void {
     this.isLoading = true;
-    this.apiService.getTodayHabits().subscribe({
+    this.apiService.getHabits().subscribe({
       next: (data) => {
-        this.todayHabits = data;
-        this.isLoading = false;
+        this.habits = data;
+        this.loadTodayHabits();
         this.cd.detectChanges();
       },
       error: () => {
-        this.errorMessage = 'Failed to load today\'s habits.';
+        this.errorMessage = 'Failed to load habits.';
         this.isLoading = false;
       }
     });
   }
 
+  loadTodayHabits(): void {
+  this.apiService.getTodayHabits().subscribe({
+    next: (data: any[]) => {
+
+      this.todayHabits = this.habits.map(habit => {
+        const today = data.find(t => t.id == habit.id);
+        return {
+          ...habit,
+          completed: today ? today.completed : false
+        };
+      });
+
+      this.isLoading = false;
+      this.cd.detectChanges();
+    },
+    error: () => { this.isLoading = false; }
+  });
+}
+
   loadSummary(): void {
     this.apiService.getHabitSummary().subscribe({
-      next: (data) => { this.summary = data, this.cd.detectChanges();}, 
+      next: (data) => { this.summary = data; },
       error: () => {}
     });
   }
 
+  isTodayComplete(habit: any): boolean {
+  const h = this.todayHabits.find(x => x.id == habit.id);
+  return h ? h.completed === true : false;
+}
+
   completeHabit(habit: any): void {
-    if (habit.completed) return;
+    if (this.isTodayComplete(habit)) return;
     this.apiService.completeHabit(habit.id).subscribe({
       next: () => {
-        habit.completed = true;
-        if (this.summary) {
-          this.summary.completed_today++;
-          this.summary.completion_rate = Math.round(
-            (this.summary.completed_today / this.summary.total_habits) * 100
-          );
-        }
+        this.loadTodayHabits();
+        this.loadSummary();
         this.cd.detectChanges();
       },
-      error: () => {
-        this.errorMessage = 'Failed to complete habit.';
+      error: (error) => {
+        if (error.status === 400) {
+          this.errorMessage = 'Already completed today!';
+        } else {
+          this.errorMessage = 'Failed to complete habit.';
+        }
         setTimeout(() => this.errorMessage = '', 3000);
       }
     });
@@ -73,15 +97,13 @@ export class HomeComponent implements OnInit {
 
   completeAll(): void {
     this.isCompletingAll = true;
+    this.completeAllMessage = '';
     this.apiService.completeAllToday().subscribe({
       next: (res) => {
-        this.todayHabits.forEach(h => h.completed = true);
-        if (this.summary) {
-          this.summary.completed_today = this.summary.total_habits;
-          this.summary.completion_rate = 100;
-        }
         this.completeAllMessage = res.message;
         this.isCompletingAll = false;
+        this.loadTodayHabits();
+        this.loadSummary();
         this.cd.detectChanges();
         setTimeout(() => this.completeAllMessage = '', 3000);
       },
@@ -95,11 +117,11 @@ export class HomeComponent implements OnInit {
 
   get completedCount(): number {
     return this.todayHabits.filter(h => h.completed).length;
-  }
+}
 
   get totalCount(): number {
     return this.todayHabits.length;
-  }
+}
 
   get progressPercent(): number {
     if (this.totalCount === 0) return 0;
@@ -123,7 +145,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  // SVG ring math
   get ringCircumference(): number { return 2 * Math.PI * 36; }
   get ringOffset(): number {
     return this.ringCircumference - (this.progressPercent / 100) * this.ringCircumference;

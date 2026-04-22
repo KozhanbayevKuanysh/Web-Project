@@ -8,14 +8,13 @@ router.register('categories', CategoryViewSet)
 router.register('habits', HabitViewSet)
 router.register('habitlogs', HabitLogViewSet)
 
-urlpatterns = router.urls + [
+urlpatterns = [
+    # FBV
+    path('habits/summary/', habit_summary, name='habit_summary'),
+    path('habits/complete-all/', complete_all_today, name='complete_all_today'),
+    
     path('statistics/', StatisticsView.as_view()),
     path('register/', RegisterView.as_view(), name='auth_register'),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
-    # FBV 1 — habit summary (dashboard stats)
-    path('habits/summary/', habit_summary, name='habit_summary'),
-    # FBV 2 — complete all habits for today
-    path('habits/complete-all/', complete_all_today, name='complete_all_today'),
-]
+] + router.urls
